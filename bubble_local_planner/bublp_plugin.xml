@@ -1,0 +1,7 @@
+<library path="lib/libbubble_local_planner">
+	<class name ="bubble_local_planner/BubblePlannerROS" type ="bubble_local_planner::BubblePlannerROS" base_class_type= "nav_core::BaseLocalPlanner">
+		<description>
+			Bubble Plugin for BaseLocalPlanner that allows you to follow the global path as it is.
+		</description>
+	</class>
+</library>
