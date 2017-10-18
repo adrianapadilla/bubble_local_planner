@@ -10,6 +10,14 @@
 // local planner specific classes which provide some macros
 #include <base_local_planner/goal_functions.h>
 
+// time
+#include <time.h>
+
+//files
+#include <fstream>
+#include <iostream>
+using namespace std;
+
 // msgs
 #include <nav_msgs/Path.h>
 #include <geometry_msgs/PoseStamped.h>
@@ -113,7 +121,7 @@ namespace bubble_local_planner{
       // Topics & Services
       ros::Subscriber amcl_sub; ///<@brief subscribes to the amcl topic 
       ros::Subscriber laser_sub; ///<@brief subscribes to the laser topic
-      //ros::Publisher bubble_pub; ///<@brief publishes to the bubble shape to visualize on rviz 
+      ros::Publisher path_pub; ///<@brief publishes to the bubble shape to visualize on rviz 
 
       // Data
       int d; // change this name to: side
@@ -131,6 +139,15 @@ namespace bubble_local_planner{
       geometry_msgs::Pose poseNow;  //just extra, for the visualization
       double yawR;
       sensor_msgs::LaserScan laserData;
+      visualization_msgs::Marker points;
+      double average;
+      int num;
+      ofstream file;
+
+     //measuring
+      double stopTime, startTime;
+      bool firstTime, hasStarted;
+      double pathLength;
 
      // Bubble
       double bubble[180];
@@ -141,6 +158,7 @@ namespace bubble_local_planner{
       bool flag;
       bool flag2;
       bool flag3;
+      bool flag4;
 
       // Velocity methods
       /**
@@ -273,6 +291,7 @@ namespace bubble_local_planner{
 
 	//void bubbleVisualization();
 
+	void pathVisualization();
   };
 };
 
